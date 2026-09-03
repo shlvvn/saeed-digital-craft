@@ -101,14 +101,14 @@ export const content = {
     label: { ar: "TIMELINE / 002", en: "TIMELINE / 002" },
     items: [
       {
-        period: "2026",
+        period: { ar: "2026", en: "2026" },
         title: { ar: "بكالوريوس تقنية المعلومات", en: "Bachelor of Information Technology" },
         org: { ar: "جامعة الملك عبدالعزيز", en: "King Abdulaziz University" },
         meta: { ar: "إدارة الشبكات وأمنها · 4.52 / 5.00 · ممتاز مع مرتبة الشرف", en: "Network Administration & Security · 4.52 / 5.00 · Excellent with Honors" },
-        points: [] as T[],
+        points: [] as { ar: string; en: string }[],
       },
       {
-        period: { ar: "٦ أشهر", en: "6 months" } as unknown as string,
+        period: { ar: "٦ أشهر", en: "6 months" },
         title: { ar: "أخصائي دعم تقني", en: "IT Support Specialist" },
         org: { ar: "شركة نهج الإنصاف", en: "Nahj Al-Insaf Company" },
         meta: { ar: "خبرة عملية في الدعم الفني", en: "Hands-on technical support experience" },
