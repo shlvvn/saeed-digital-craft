@@ -25,7 +25,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = dir;
-    document.documentElement.dataset.lang = lang;
+    document.documentElement.dataset["lang"] = lang;
     localStorage.setItem("saeed-lang", lang);
   }, [lang, dir]);
 
