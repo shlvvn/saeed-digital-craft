@@ -1,6 +1,5 @@
 export const EMAIL = "saeeedkhzh@gmail.com";
 export const CV_PATH = "/saeed-alzahrani-cv.pdf";
-export const LINKEDIN_URL: string | null = null;
 
 export const MAIL_SUBJECT = "فرصة وظيفية — سعيد خضر الزهراني";
 export const MAIL_BODY = `مرحبًا سعيد،
@@ -33,7 +32,7 @@ export const content = {
   name: { ar: "سعيد خضر الزهراني", en: "Saeed Khader Alzahrani" },
   shortName: { ar: "سعيد خضر", en: "Saeed K." },
   role: {
-    ar: "تقنية معلومات • شبكات • دعم تقني",
+    ar: "تقنية معلومات • شبكات • دعم فني",
     en: "Information Technology • Networking • IT Support",
   },
   location: { ar: "جدة / رابغ — المملكة العربية السعودية", en: "Jeddah / Rabigh — Saudi Arabia" },
@@ -48,8 +47,6 @@ export const content = {
     sendOpportunity: { ar: "أرسل فرصة وظيفية", en: "Send an opportunity" },
     sendMeOne: { ar: "أرسل لي فرصة", en: "Send me an opportunity" },
     navCta: { ar: "فرصة وظيفية؟", en: "Have a role?" },
-    floatingCta: { ar: "لديك فرصة لي؟", en: "Got a role for me?" },
-    linkedin: { ar: "التواصل المهني", en: "Professional network" },
     menu: { ar: "القائمة", en: "Menu" },
     close: { ar: "إغلاق", en: "Close" },
   },
@@ -108,7 +105,7 @@ export const content = {
         points: [] as { ar: string; en: string }[],
       },
       {
-        period: { ar: "٦ أشهر", en: "6 months" },
+        period: { ar: "نوفمبر 2025 — مايو 2026", en: "November 2025 — May 2026" },
         title: { ar: "أخصائي دعم تقني", en: "IT Support Specialist" },
         org: { ar: "شركة نهج الإنصاف", en: "Nahj Al-Insaf Company" },
         meta: { ar: "خبرة عملية في الدعم الفني", en: "Hands-on technical support experience" },
@@ -311,8 +308,8 @@ export const content = {
     submit: { ar: "إرسال فرصة إلى سعيد", en: "Send opportunity to Saeed" },
   },
   cta: {
-    afterExperience: { ar: "تحتاج شخصًا يحل المشكلة؟", en: "Need someone who solves problems?" },
-    afterProject: { ar: "مهتم بما أستطيع تقديمه؟", en: "Interested in what I can offer?" },
+    afterExperience: { ar: "هل لديك احتياج تقني واضح؟", en: "Have a clear technical need?" },
+    afterProject: { ar: "مهتم بالمشروع أو خبرتي؟", en: "Interested in the project or my experience?" },
     beforeFooter: { ar: "لنتحدث.", en: "Let's talk." },
     heroInline: { ar: "لديك فرصة؟", en: "Have an opportunity?" },
   },

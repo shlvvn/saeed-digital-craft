@@ -12,110 +12,68 @@ export function Hero({ onOpenModal }: { onOpenModal: () => void }) {
   const e = content.education;
 
   return (
-    <section id="home" className="atmos relative overflow-hidden px-5 pt-32 pb-20 sm:px-8 md:pt-40 md:pb-28 lg:px-12">
-      <div aria-hidden className="grid-lines pointer-events-none absolute inset-0 -z-10" />
+    <section id="home" className="atmos relative overflow-hidden px-5 pt-32 pb-14 sm:px-8 md:pt-36 md:pb-20 lg:px-12">
+      <div aria-hidden className="hero-grid pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto w-full max-w-6xl">
-        <Reveal>
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs text-muted-foreground">
-            <span aria-hidden className="status-dot size-1.5 rounded-full bg-ok" />
-            {t(content.ui.availability)}
-          </span>
-        </Reveal>
+        <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
+          <Reveal className="order-2 lg:order-1">
+            <div className="character-stage relative mx-auto w-full max-w-[520px] overflow-hidden rounded-[2rem] border border-signal/20 bg-surface/55 shadow-[0_30px_90px_-45px_var(--signal)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_35%,color-mix(in_oklab,var(--signal)_18%,transparent),transparent_55%)]" />
+              <img src="/brand/saeed-character-clean.png" alt="شخصية سعيد الزهراني التقنية" className="relative z-10 h-auto w-full object-cover object-center mix-blend-normal" />
+            </div>
+          </Reveal>
 
-        <Reveal delay={80} className="mt-8">
-          <MetaLabel>{t(content.hero.kicker)}</MetaLabel>
-        </Reveal>
+          <div className="order-1 lg:order-2" dir="rtl">
+            <Reveal>
+              <span className="inline-flex items-center gap-2 rounded-full border border-signal/25 bg-signal/5 px-4 py-1.5 text-xs font-medium text-signal">
+                <span aria-hidden className="status-dot size-1.5 rounded-full bg-ok" />
+                {t(content.ui.availability)}
+              </span>
+            </Reveal>
+            <Reveal delay={80} className="mt-7">
+              <MetaLabel>{t(content.hero.kicker)}</MetaLabel>
+            </Reveal>
+            <Reveal delay={140}>
+              <h1 className="display-xl mt-4 max-w-3xl text-foreground">{t(content.name)}</h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="mt-4 text-lg font-semibold text-signal sm:text-xl">أخصائي تقنية معلومات <span className="text-muted-foreground">|</span> دعم تقني <span className="text-muted-foreground">|</span> شبكات</p>
+            </Reveal>
+            <Reveal delay={260}>
+              <p className="body-lg mt-6 max-w-2xl text-muted-foreground">أساعد في حل المشكلات التقنية، دعم المستخدمين، وتشخيص أعطال الأنظمة والشبكات — مع خلفية أكاديمية في تقنية المعلومات وإدارة الشبكات وأمنها.</p>
+            </Reveal>
+            <Reveal delay={320}>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <CTAButton size="lg" onClick={() => document.getElementById("project")?.scrollIntoView({ behavior: "smooth" })}>
+                  {t(content.ui.exploreCta)} <ArrowRight className="size-4 rtl:rotate-180" />
+                </CTAButton>
+                <CTAButton size="lg" variant="outline" href={CV_PATH} download>
+                  <Download className="size-4" /> {t(content.ui.cvCta)}
+                </CTAButton>
+                <CTAButton size="lg" variant="outline" onClick={onOpenModal}>
+                  <Mail className="size-4" /> {t(content.ui.contactCta)}
+                </CTAButton>
+              </div>
+            </Reveal>
+          </div>
+        </div>
 
-        <Reveal delay={140}>
-          <h1 className="mt-5 display-xl text-foreground">{t(content.name)}</h1>
-        </Reveal>
-
-        <Reveal delay={200}>
-          <p className="mt-4 text-base text-signal sm:text-lg">{t(content.role)}</p>
-        </Reveal>
-
-        <Reveal delay={260}>
-          <p className="body-lg mt-7 max-w-2xl text-muted-foreground">{t(content.hero.headline)}</p>
-        </Reveal>
+        <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal delay={100}><div className="panel lift p-5"><MetaLabel>GPA</MetaLabel><p className="mt-3 font-mono text-3xl font-semibold">{e.gpa}<span className="text-sm text-muted-foreground"> / {e.gpaMax}</span></p><p className="mt-1 text-xs text-signal">{t(e.honors)}</p></div></Reveal>
+          <Reveal delay={150}><div className="panel lift p-5"><MetaLabel>{t(content.experience.label)}</MetaLabel><p className="mt-3 text-2xl font-bold">7 أشهر</p><p className="mt-1 text-xs text-muted-foreground">نوفمبر 2025 — مايو 2026</p></div></Reveal>
+          <Reveal delay={200}><div className="panel lift p-5"><MetaLabel>{t(e.label)}</MetaLabel><p className="mt-3 text-lg font-bold">{t(e.degree)}</p><p className="mt-1 text-xs text-muted-foreground">{t(e.university)} · {e.year}</p></div></Reveal>
+          <Reveal delay={250}><div className="panel lift p-5"><MetaLabel>PROJECT</MetaLabel><p className="mt-3 text-2xl font-bold text-signal">MyFCITR</p><p className="mt-1 text-xs text-muted-foreground">منصة رقمية لخدمات الطلاب الأكاديمية</p></div></Reveal>
+        </div>
 
         <Reveal delay={320}>
-          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground/85">
-            {t(content.hero.sub)}
-          </p>
-        </Reveal>
-
-        <Reveal delay={400}>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <CTAButton size="lg" onClick={onOpenModal}>
-              {t(content.ui.contactCta)}
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 rtl:rotate-180" />
-            </CTAButton>
-            <CTAButton size="lg" variant="outline" href="#project">
-              {t(content.ui.exploreCta)}
-            </CTAButton>
-            <CTAButton size="lg" variant="outline" href={CV_PATH} download>
-              <Download className="size-4" />
-              {t(content.ui.cvCta)}
-            </CTAButton>
+          <div className="tool-strip mt-4 panel flex flex-wrap items-center justify-center gap-x-7 gap-y-3 px-5 py-4 text-xs text-muted-foreground">
+            <span className="font-semibold text-foreground">التقنيات والأدوات</span><span>Windows</span><span>Linux</span><span>Networking</span><span>Troubleshooting</span><span>Microsoft 365</span><span>Python</span><span>SQL Server</span><span>Git</span>
           </div>
         </Reveal>
-
-        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Reveal delay={120}>
-            <div className="panel lift h-full p-6">
-              <MetaLabel>{t(e.label)}</MetaLabel>
-              <p className="mt-5 font-mono text-4xl font-semibold text-foreground">
-                {e.gpa}
-                <span className="text-base text-muted-foreground"> / {e.gpaMax}</span>
-              </p>
-              <p className="mt-2 text-sm text-signal">{t(e.honors)}</p>
-              <p className="mt-4 text-sm text-muted-foreground">
-                {t(e.degree)} — {t(e.track)}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground/75">
-                {t(e.university)} · {e.year}
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <div className="panel lift h-full p-6">
-              <GraduationCap className="size-5 text-signal" />
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                {t(content.about.philosophy)}
-              </p>
-              <div className="hairline my-5" />
-              <p className="flex items-center gap-2 text-xs text-muted-foreground/80">
-                <MapPin className="size-3.5" />
-                {t(content.location)}
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={280} className="sm:col-span-2 lg:col-span-1">
-            <div className="panel lift flex h-full flex-col justify-between p-6">
-              <div>
-                <ShieldCheck className="size-5 text-signal" />
-                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                  {t(content.cta.heroInline)}
-                </p>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                <CTAButton href={mailto()} size="md">
-                  <Mail className="size-4" />
-                  {t(content.ui.sendMeOne)}
-                </CTAButton>
-                <CopyEmailButton />
-              </div>
-            </div>
-          </Reveal>
-        </div>
       </div>
     </section>
   );
 }
-
-/* ---------------- ABOUT ---------------- */
 
 export function About() {
   const { t } = useLang();
@@ -157,7 +115,7 @@ export function Experience({ onOpenModal }: { onOpenModal: () => void }) {
               <p className="mt-4 text-xs text-muted-foreground/80">{t(item.meta)}</p>
               {item.points.length ? (
                 <>
-                  <div className="hairline my-6" />
+                  <div className="my-6 h-px bg-border/70" />
                   <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                     {item.points.map((p, j) => (
                       <li key={j} className="flex items-start gap-3 text-sm text-muted-foreground">
@@ -172,7 +130,6 @@ export function Experience({ onOpenModal }: { onOpenModal: () => void }) {
           </Reveal>
         ))}
       </div>
-      <InlineCta text={t(content.cta.afterExperience)} onOpenModal={onOpenModal} />
     </Section>
   );
 }
@@ -205,7 +162,7 @@ export function Skills() {
             <Reveal>
               <div className="flex items-center gap-4">
                 <h3 className="text-sm font-semibold tracking-wide text-foreground">{t(g.name)}</h3>
-                <span aria-hidden className="hairline flex-1" />
+                <span aria-hidden className="h-px flex-1 bg-border/70" />
                 <span className="meta-label">{String(g.items.length).padStart(2, "0")}</span>
               </div>
             </Reveal>
@@ -252,7 +209,7 @@ export function Process() {
                 {t(f)}
               </span>
               {i < content.process.flow.length - 1 ? (
-                <span aria-hidden className="h-px w-6 bg-signal/40" />
+                <span aria-hidden className="size-1.5 rounded-full bg-signal/45" />
               ) : null}
             </li>
           ))}
@@ -313,7 +270,6 @@ export function Project({ onOpenModal }: { onOpenModal: () => void }) {
         </figure>
       </Reveal>
 
-      <InlineCta text={t(content.cta.afterProject)} onOpenModal={onOpenModal} />
     </Section>
   );
 }
@@ -325,16 +281,19 @@ export function Certifications() {
   return (
     <Section id="certifications" label={t(content.certifications.label)}>
       <SectionHeading title={t(content.certifications.title)} />
-      <ul className="mt-12 divide-y divide-border">
+      <div className="mt-12 overflow-hidden rounded-2xl border border-border/80 bg-surface/25">
         {content.certifications.items.map((c, i) => (
-          <Reveal as="li" key={i} delay={i * 60}>
-            <div className="flex flex-wrap items-baseline justify-between gap-3 py-5">
-              <p className="text-sm text-foreground">{t(c.t)}</p>
-              <span className="meta-label">{t(c.i)}</span>
+          <Reveal as="div" key={i} delay={i * 60}>
+            <div className="group flex items-center justify-between gap-5 border-b border-border/70 px-5 py-5 last:border-b-0 sm:px-6">
+              <div className="flex min-w-0 items-center gap-4">
+                <span className="font-mono text-xs text-signal/80">{String(i + 1).padStart(2, "0")}</span>
+                <p className="text-sm font-medium text-foreground transition-colors group-hover:text-signal">{t(c.t)}</p>
+              </div>
+              <span className="hidden shrink-0 text-xs text-muted-foreground sm:block">{t(c.i)}</span>
             </div>
           </Reveal>
         ))}
-      </ul>
+      </div>
 
       <Reveal delay={120}>
         <div className="panel mt-12 p-6 sm:p-8">
@@ -392,7 +351,7 @@ export function HireMatch() {
               </button>
             ))}
           </div>
-          <div className="hairline my-7" />
+          <div className="my-7 h-px bg-border/70" />
           <p className="text-sm leading-relaxed text-foreground">{t(current.answer)}</p>
           <div className="mt-6">
             <CTAButton href={mailto(t(current.subject))}>
@@ -447,14 +406,6 @@ export function Footer() {
   );
 }
 
-export function FloatingCta({ onOpenModal }: { onOpenModal: () => void }) {
-  const { t } = useLang();
-  return (
-    <div className="fixed bottom-5 z-40 end-5 lg:hidden">
-      <CTAButton onClick={onOpenModal} className="shadow-[var(--glow-accent)]">
-        <Mail className="size-4" />
-        {t(content.ui.floatingCta)}
-      </CTAButton>
-    </div>
-  );
+export function FloatingCta() {
+  return null;
 }

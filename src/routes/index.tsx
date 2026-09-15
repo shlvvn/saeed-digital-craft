@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LangProvider } from "@/lib/i18n";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { ContactModal } from "@/components/portfolio/ContactModal";
@@ -8,7 +8,6 @@ import {
   Certifications,
   Contact,
   Experience,
-  FloatingCta,
   Footer,
   Hero,
   HireMatch,
@@ -17,7 +16,7 @@ import {
   Skills,
 } from "@/components/portfolio/sections";
 
-const title = "سعيد خضر الزهراني — تقنية معلومات، شبكات ودعم تقني";
+const title = "سعيد خضر الزهراني — تقنية معلومات، شبكات ودعم فني";
 const description =
   "الملف الشخصي لسعيد خضر الزهراني: بكالوريوس تقنية المعلومات — إدارة الشبكات وأمنها، خبرة دعم فني، ومشروع MyFCITR. Saeed Khader Alzahrani — IT, networking and technical support portfolio.";
 
@@ -37,12 +36,25 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [dark, setDark] = useState(true);
   const open = () => setModalOpen(true);
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("saeed-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDark(saved ? saved === "dark" : prefersDark);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    window.localStorage.setItem("saeed-theme", dark ? "dark" : "light");
+  }, [dark]);
 
   return (
     <LangProvider>
       <div className="min-h-screen bg-background">
-        <Navbar onOpenModal={open} />
+        <Navbar onOpenModal={open} dark={dark} onToggleTheme={() => setDark((v) => !v)} />
         <main>
           <Hero onOpenModal={open} />
           <About />
@@ -55,7 +67,6 @@ function Index() {
           <Contact onOpenModal={open} />
         </main>
         <Footer />
-        <FloatingCta onOpenModal={open} />
         <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
       </div>
     </LangProvider>
